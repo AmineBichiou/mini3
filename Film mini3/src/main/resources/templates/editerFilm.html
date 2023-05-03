@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="template">
+
+<link rel="stylesheet" type="text/css"
+      href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+<head>
+  <meta charset="utf-8">
+  <title>Liste des Films</title>
+</head>
+<body>
+<div th:replace="template"></div>
+<div class="container mt-5" >
+  <div class="card-body">
+    <form th:action="@{saveFilm}" method="post">
+      <div class="form-group">
+        <label class="control-label" hidden>ID Film :</label>
+        <input type="hidden" name="idFilm" class="form-control"
+               th:value="${film.idFilm}" />
+      </div>
+
+      <div class="form-group">
+        <label class="control-label">Nom Film :</label>
+        <input type="text" name="nomFilm" class="form-control" th:value="${film.nomFilm}" />
+        <span th:errors="${film.nomFilm}" class="text-danger"></span>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Rate Film :</label>
+        <input type="number" name="rateFilm" class="form-control"th:value="${film.rateFilm}"  />
+        <span th:errors="${film.rateFilm}" class="text-danger"></span>
+
+      </div>
+      <div class="form-group">
+        <label class="control-label">Date Création :</label>
+        <input type="date" name="dateCreation" class="form-control" th:value="${film.dateCreation}" />
+        <span th:errors="${film.dateCreation}" class="text-danger"></span>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Valider</button>
+    </form>
+  </div>
+  <br/>
+  <br/>
+</div>
+</body>
+</html>
